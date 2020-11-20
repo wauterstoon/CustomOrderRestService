@@ -21,9 +21,9 @@ namespace CustomerOrderRESTService.EFLayer.Repositories
             return context.Customers.Find(id);
         }
 
-        public Customer Find(string uniqueNameAddressCombo)
+        public Customer Find(string name, string address)
         {
-            return context.Customers.Where(x => x.UniqueNameAddressCombo == uniqueNameAddressCombo).FirstOrDefault();
+            return context.Customers.Where(x => x.Name == name && x.Address == address).FirstOrDefault();
         }
 
         public void RemoveCustomer(int id)
@@ -32,12 +32,11 @@ namespace CustomerOrderRESTService.EFLayer.Repositories
             context.Customers.Remove(customer);
         }
 
-        public void UpdateCustomer(int id, string name, string address, string combo)
+        public void UpdateCustomer(int id, string name, string address)
         {
             Customer customer = context.Customers.Find(id);
             customer.Name = name;
             customer.Address = address;
-            customer.UniqueNameAddressCombo = combo;
         }
     }
 }

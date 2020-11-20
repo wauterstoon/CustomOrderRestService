@@ -5,7 +5,7 @@ using System;
 
 namespace CustomerOrderRESTService.BusinessLayer.Procedures
 {
-    public class Manager
+    public class Manager : IManager
     {
         private IUnitOfWork uow;
 
@@ -59,8 +59,7 @@ namespace CustomerOrderRESTService.BusinessLayer.Procedures
         /// </summary>
         public void AddCustomer(string name, string address)
         {
-            string combo = Customer.CreateUniqueNameAddressCombo(name, address);
-            if (uow.Customers.Find(combo) != null) throw new BusinessException("this combination of name and address already exists");
+            if (uow.Customers.Find(name, address) != null) throw new BusinessException("this combination of name and address already exists");
             uow.Customers.AddCustomer(new Customer(name, address));
             uow.Complete();
         }
@@ -86,10 +85,9 @@ namespace CustomerOrderRESTService.BusinessLayer.Procedures
             if (address.Length < 10) throw new BusinessException("address must be 10 characters or more");
             if (address == null) throw new NullReferenceException(nameof(address));
 
-            string combo = Customer.CreateUniqueNameAddressCombo(name, address);
-            if (uow.Customers.Find(combo) != null) throw new BusinessException("this combination of name and address already exists");
+            if (uow.Customers.Find(name, address) != null) throw new BusinessException("this combination of name and address already exists");
 
-            uow.Customers.UpdateCustomer(customerId, name, address, combo);
+            uow.Customers.UpdateCustomer(customerId, name, address);
             uow.Complete();
         }
 

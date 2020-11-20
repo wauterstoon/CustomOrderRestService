@@ -6,12 +6,12 @@ namespace CustomerOrderRESTService.BusinessLayer.Interfaces
     {
         void AddCustomer(Customer customer);
 
-        void UpdateCustomer(int id, string name, string address, string combo);
+        void UpdateCustomer(int id, string name, string address);
 
         void RemoveCustomer(int id);
 
         Customer Find(int id);
 
-        Customer Find(string uniqueNameAddressCombo);
+        Customer Find(string name, string address);
     }
 }

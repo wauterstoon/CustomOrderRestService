@@ -24,7 +24,6 @@ namespace CustomerOrderRESTService.Tests.BusinessLayer.Procedures.ManagerTests.C
             Customer customer = ctx.Customers.Local.First();
             Assert.AreEqual("Jan Janssens", customer.Name);
             Assert.AreEqual("Nieuwstraat 100, 1000 Brussel", customer.Address);
-            Assert.AreEqual("JanJanssensNieuwstraat100,1000Brussel", customer.UniqueNameAddressCombo);
         }
 
         [TestMethod]

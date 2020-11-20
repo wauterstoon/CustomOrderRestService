@@ -9,6 +9,8 @@ namespace CustomerOrderRESTService.BusinessLayer.Models
     {
         #region Fields
         private int _id;
+        private string _name;
+        private string _address;
         private List<Order> _orders = new List<Order>();
 
         #endregion Fields
@@ -20,13 +22,28 @@ namespace CustomerOrderRESTService.BusinessLayer.Models
             get { return _id; }
             set
             {
-                if (value == null) throw new ArgumentNullException("id can not be null");
+                if (value < -1 ) throw new BusinessException("id can't be lower than 0");
                 _id = value;
             }
         }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string UniqueNameAddressCombo { get; set; }
+        public string Name {
+            get { return _name; }
+            set
+            {
+                if (value == null) throw new ArgumentNullException("name can not be null");
+                if (value == String.Empty) throw new BusinessException("name can't be empty");
+                _name = value;
+            }
+        }
+        public string Address {
+            get { return _address; }
+            set
+            {
+                if (value == null) throw new ArgumentNullException("address can not be null");
+                if (value.Length < 10) throw new BusinessException("address must be 10 characters or more");
+                _address = value;
+            }
+        }
 
         public IReadOnlyList<Order> Orders
         {
@@ -47,7 +64,6 @@ namespace CustomerOrderRESTService.BusinessLayer.Models
             Name = name ?? throw new NullReferenceException(nameof(name));
             if (address.Length < 10) throw new BusinessException("address must be 10 characters or more");
             Address = address ?? throw new NullReferenceException(nameof(address));
-            UniqueNameAddressCombo = CreateUniqueNameAddressCombo(name, address);
         }
 
         #endregion Constructors
@@ -80,7 +96,7 @@ namespace CustomerOrderRESTService.BusinessLayer.Models
             }
             else
             {
-                order.ChangeAmount(amount);
+                order.Amount = amount;
                 order.Product = product;
                 return order;
             }
@@ -91,14 +107,6 @@ namespace CustomerOrderRESTService.BusinessLayer.Models
             Order order = Orders.FirstOrDefault(x => x.Id == orderId);
             _orders.Remove(order);
         }
-
-        internal static string CreateUniqueNameAddressCombo(string name, string address)
-        {
-            string combo = String.Concat(name.Where(c => !Char.IsWhiteSpace(c)))
-                + String.Concat(address.Where(c => !Char.IsWhiteSpace(c)));
-            return combo;
-        }
-
         #endregion Methods
     }
 }

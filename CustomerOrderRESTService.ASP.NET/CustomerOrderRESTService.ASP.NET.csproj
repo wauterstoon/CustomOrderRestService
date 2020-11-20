@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CustomerOrderRESTService.BusinessLayer\CustomerOrderRESTService.BusinessLayer.csproj" />
+    <ProjectReference Include="..\CustomerOrderRESTService.EFLayer\CustomerOrderRESTService.EFLayer.csproj" />
   </ItemGroup>
 
 

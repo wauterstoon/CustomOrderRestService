@@ -56,7 +56,7 @@ namespace CustomerOrderRESTService.Tests.BusinessLayer.Procedures.ManagerTests.O
             Assert.AreEqual(1, customer.Orders.Count);
             Assert.AreEqual(ProductType.Duvel, order.Product);
             Assert.AreEqual(5, order.Amount);
-            Assert.AreEqual(1, order.CustomerId);
+            Assert.AreEqual(1, order.Customer.Id);
             Assert.AreEqual("Jan Janssens", order.Customer.Name);
         }
 
@@ -71,7 +71,7 @@ namespace CustomerOrderRESTService.Tests.BusinessLayer.Procedures.ManagerTests.O
             manager.AddOrder(1, ProductType.Duvel, 5);
             // Assert
             Order order = ctx.Orders.Local.First();
-            Assert.AreEqual(1, order.CustomerId);
+            Assert.AreEqual(1, order.Customer.Id);
             Assert.AreEqual("Jan Janssens", order.Customer.Name);
         }
 

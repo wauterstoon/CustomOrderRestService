@@ -20,7 +20,6 @@ namespace CustomerOrderRESTService.Tests.BusinessLayer.Models
             Assert.IsInstanceOfType(customer, typeof(Customer));
             Assert.AreEqual("Jan Janssens", customer.Name);
             Assert.AreEqual("Sint-Veerleplein 11, 9000 Gent", customer.Address);
-            Assert.AreEqual("JanJanssensSint-Veerleplein11,9000Gent", customer.UniqueNameAddressCombo);
         }
 
         [TestMethod]

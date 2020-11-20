@@ -56,11 +56,6 @@ namespace CustomerOrderRESTService.EFLayer.DataAccess
             entityBuilder.Property(x => x.Address)
                 .IsRequired()
                 .HasMaxLength(200);
-
-            entityBuilder
-                .Property(x => x.UniqueNameAddressCombo)
-                .IsRequired()
-                .HasMaxLength(300);
         }
 
         private void ConfigureOrder(EntityTypeBuilder<BusinessLayer.Models.Order> entityBuilder)
