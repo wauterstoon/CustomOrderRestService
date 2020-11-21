@@ -4,10 +4,13 @@ using CustomerOrderRESTService.EFLayer.DataAccess;
 
 namespace CustomerOrderRESTService.EFLayer.Repositories
 {
-    public class OrderRepository : Repository, IOrderRepository
+    public class OrderRepository : IOrderRepository
     {
-        public OrderRepository(DataContext context) : base(context)
+        private DataContext context;
+
+        public OrderRepository(DataContext context)
         {
+            this.context = context;
         }
 
         public void AddOrder(Order order)

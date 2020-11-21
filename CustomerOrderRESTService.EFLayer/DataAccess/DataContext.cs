@@ -46,7 +46,7 @@ namespace CustomerOrderRESTService.EFLayer.DataAccess
 
         private void ConfigureCustomer(EntityTypeBuilder<BusinessLayer.Models.Customer> entityBuilder)
         {
-            entityBuilder.ToTable("Customer");
+            entityBuilder.ToTable("CustomerTable");
             entityBuilder.HasKey(x => x.Id);
 
             entityBuilder.Property(x => x.Name)
@@ -60,14 +60,14 @@ namespace CustomerOrderRESTService.EFLayer.DataAccess
 
         private void ConfigureOrder(EntityTypeBuilder<BusinessLayer.Models.Order> entityBuilder)
         {
-            entityBuilder.ToTable("Order");
+            entityBuilder.ToTable("OrderTable");
             entityBuilder.HasKey(x => x.Id);
 
-            entityBuilder
-                    .HasOne(x => x.Customer)
-                    .WithMany(x => x.Orders)
-                    .IsRequired(true)
-                    .HasForeignKey(x => x.CustomerId);
+            //entityBuilder
+            //        .HasOne(x => x.Customer)
+            //        .WithMany(x => x.Orders)
+            //        .IsRequired(true);
+                    //.HasForeignKey(x => x.CustomerId);
 
             entityBuilder.Property(x => x.Amount)
                 .IsRequired();

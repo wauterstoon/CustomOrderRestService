@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CustomerOrderRESTService.EFLayer.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201115195950_changes")]
-    partial class changes
+    [Migration("20201121143734_init2")]
+    partial class init2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

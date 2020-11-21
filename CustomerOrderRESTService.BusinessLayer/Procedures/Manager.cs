@@ -21,8 +21,16 @@ namespace CustomerOrderRESTService.BusinessLayer.Procedures
         {
             Customer customer = uow.Customers.Find(customerId);
             if (customer == null) throw new BusinessException("customer doesn't exist");
+            //TODO if order already exist select order
             Order order = customer.CreateOrder(product, amount);
-            uow.Orders.AddOrder(order);
+            if(FindOrder(order.Id) == null)
+            {
+                uow.Orders.AddOrder(order);
+            }
+            else
+            {
+                UpdateOrder(order.Id, order.Amount, order.Product);
+            }
             uow.Complete();
         }
 

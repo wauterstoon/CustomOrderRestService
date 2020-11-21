@@ -1,5 +1,7 @@
 ﻿using CustomerOrderRESTService.BusinessLayer.Exceptions;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CustomerOrderRESTService.BusinessLayer.Models
 {
@@ -31,10 +33,9 @@ namespace CustomerOrderRESTService.BusinessLayer.Models
                 _amount = value;
             }
         }
-        public int CustomerId {get; set;}
         public Customer Customer {
             get { return _customer; }
-            internal set
+            set
             {
                 if (value == null) throw new ArgumentNullException("customer can not be null");
                 _customer = value;

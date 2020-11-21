@@ -5,10 +5,13 @@ using System.Linq;
 
 namespace CustomerOrderRESTService.EFLayer.Repositories
 {
-    public class CustomerRepository : Repository, ICustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
-        public CustomerRepository(DataContext context) : base(context)
+        private DataContext context;
+
+        public CustomerRepository(DataContext context)
         {
+            this.context = context;
         }
 
         public void AddCustomer(Customer customer)

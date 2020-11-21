@@ -2,7 +2,7 @@
 
 namespace CustomerOrderRESTService.EFLayer.Migrations
 {
-    public partial class initCreate : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,7 @@ namespace CustomerOrderRESTService.EFLayer.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
-                    Address = table.Column<string>(maxLength: 200, nullable: false),
-                    UniqueNameAddressCombo = table.Column<string>(nullable: false)
+                    Address = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {

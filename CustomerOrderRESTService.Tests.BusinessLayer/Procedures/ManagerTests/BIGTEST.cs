@@ -30,9 +30,8 @@ namespace CustomerOrderRESTService.Tests.BusinessLayer.Procedures.ManagerTests.O
 
             manager.FindOrder(4);
 
-            manager.DeleteOrder(2);
-            manager.DeleteOrder(3);
-            manager.DeleteOrder(4);
+           manager.DeleteOrder(2);
+           manager.DeleteOrder(3);
 
             manager.FindCustomer(2);
 
