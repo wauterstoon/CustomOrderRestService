@@ -18,7 +18,7 @@ namespace CustomerOrderRESTService.BusinessLayer.Models
             get { return _id; }
             set
             {
-                if (value < -1) throw new BusinessException("id can't be lower than 0");
+                if (value <= -1) throw new BusinessException("id can't be lower than 0");
                 _id = value;
             }
         }
@@ -31,7 +31,6 @@ namespace CustomerOrderRESTService.BusinessLayer.Models
                 _amount = value;
             }
         }
-        public int CustomerId {get; set;}
         public Customer Customer {
             get { return _customer; }
             internal set

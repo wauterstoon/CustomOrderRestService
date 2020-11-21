@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CustomerOrderRESTService.BusinessLayer.Models;
+using System;
 
 namespace CustomerOrderRESTService.BusinessLayer.Interfaces
 {
@@ -7,6 +8,7 @@ namespace CustomerOrderRESTService.BusinessLayer.Interfaces
         IOrderRepository Orders { get; }
         ICustomerRepository Customers { get; }
 
-        int Complete();
+        void Complete();
+        void AddOrderComplete(Order order);
     }
 }

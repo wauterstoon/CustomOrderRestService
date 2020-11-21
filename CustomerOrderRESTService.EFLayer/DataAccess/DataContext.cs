@@ -60,14 +60,13 @@ namespace CustomerOrderRESTService.EFLayer.DataAccess
 
         private void ConfigureOrder(EntityTypeBuilder<BusinessLayer.Models.Order> entityBuilder)
         {
-            entityBuilder.ToTable("Order");
+            entityBuilder.ToTable("OrderTable");
             entityBuilder.HasKey(x => x.Id);
 
             entityBuilder
                     .HasOne(x => x.Customer)
                     .WithMany(x => x.Orders)
-                    .IsRequired(true)
-                    .HasForeignKey(x => x.CustomerId);
+                    .IsRequired();
 
             entityBuilder.Property(x => x.Amount)
                 .IsRequired();
