@@ -4,7 +4,7 @@ namespace CustomerOrderRESTService.BusinessLayer.Interfaces
 {
     public interface IOrderRepository
     {
-        //void AddOrder(Order order);
+        void AddOrder(Order order);
 
         void UpdateOrder(int id, int amount, ProductType product);
 

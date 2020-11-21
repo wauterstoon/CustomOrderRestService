@@ -22,7 +22,7 @@ namespace CustomerOrderRESTService.BusinessLayer.Models
             get { return _id; }
             set
             {
-                if (value <= -1 ) throw new BusinessException("id can't be lower than 0");
+                if (value < -1 ) throw new BusinessException("id can't be lower than 0");
                 _id = value;
             }
         }

@@ -60,7 +60,7 @@ namespace CustomerOrderRESTService.EFLayer.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("OrderTable");
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("CustomerOrderRESTService.BusinessLayer.Models.Order", b =>

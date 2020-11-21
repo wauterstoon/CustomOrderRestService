@@ -1,7 +1,6 @@
 ﻿using CustomerOrderRESTService.BusinessLayer.Interfaces;
 using CustomerOrderRESTService.BusinessLayer.Models;
 using CustomerOrderRESTService.EFLayer.DataAccess;
-using Microsoft.EntityFrameworkCore;
 
 namespace CustomerOrderRESTService.EFLayer.Repositories
 {
@@ -11,19 +10,10 @@ namespace CustomerOrderRESTService.EFLayer.Repositories
         {
         }
 
-        //public void AddOrder(Order order)
-        //{
-        //    context.Orders.Add(order);
-
-        //    context.Database.BeginTransaction();
-        //    context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[OrderTable] ON");
-
-        //    context.SaveChanges();
-
-        //    context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[OrderTable] OFF");
-
-        //    context.Database.CommitTransaction();
-        //}
+        public void AddOrder(Order order)
+        {
+            context.Orders.Add(order);
+        }
 
         public Order Find(int id)
         {
