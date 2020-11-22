@@ -9,7 +9,7 @@ using System.Text;
 namespace CustomerOrderRESTService.Tests.BusinessLayer.Procedures.ManagerTests.OrderTests
 {
     [TestClass]
-    public class MyTestClass
+    public class BIGTEST
     {
         [TestMethod]
         public void MethodName_condition_expectedValue()
@@ -30,12 +30,12 @@ namespace CustomerOrderRESTService.Tests.BusinessLayer.Procedures.ManagerTests.O
 
             manager.FindOrder(4);
 
-           manager.DeleteOrder(2);
-           manager.DeleteOrder(3);
+            manager.DeleteOrder(2);
+            manager.DeleteOrder(3);
 
             manager.FindCustomer(2);
 
             manager.DeleteCustomer(1);
-        }   
+        }
     }
 }

@@ -5,7 +5,7 @@ using System;
 
 namespace CustomerOrderRESTService.BusinessLayer.Procedures
 {
-    public class Manager : IManager
+    public class Manager
     {
         private IUnitOfWork uow;
 
@@ -17,21 +17,23 @@ namespace CustomerOrderRESTService.BusinessLayer.Procedures
         /// <summary>
         /// Add Order, if customers is not null
         /// </summary>
-        public void AddOrder(int customerId, ProductType product, int amount)
+        public Order AddOrder(int customerId, ProductType product, int amount)
         {
             Customer customer = uow.Customers.Find(customerId);
             if (customer == null) throw new BusinessException("customer doesn't exist");
-            //TODO if order already exist select order
+            
             Order order = customer.CreateOrder(product, amount);
-            if(FindOrder(order.Id) == null)
+            if(FindOrder(customerId, product) == null)
             {
                 uow.Orders.AddOrder(order);
             }
             else
             {
-                UpdateOrder(order.Id, order.Amount, order.Product);
+                Order orderUpdate = FindOrder(customerId, product);
+                UpdateOrder(orderUpdate.Id, customerId, order.Amount, order.Product);
             }
             uow.Complete();
+            return order;
         }
 
         /// <summary>
@@ -44,32 +46,56 @@ namespace CustomerOrderRESTService.BusinessLayer.Procedures
         }
 
         /// <summary>
+        /// Find Order By customerId and product
+        /// </summary>
+        /// <returns>Order object</returns>
+        public Order FindOrder(int customerId, ProductType product)
+        {
+            return uow.Orders.Find(customerId, product);
+        }
+
+        /// <summary>
         /// Update Order, if order exists
         /// </summary>
-        public void UpdateOrder(int orderId, int amount, ProductType product)
+        //TODO if order is not from that customer
+        public void UpdateOrder(int orderId, int customerId, int amount, ProductType product)
         {
             if (FindOrder(orderId) == null) throw new BusinessException("order doesn't exist");
-            uow.Orders.UpdateOrder(orderId, amount, product);
+            if (FindCustomer(customerId) == null) throw new BusinessException("customer doesn't exist");
+            uow.Orders.UpdateOrder(orderId, customerId, amount, product);
             uow.Complete();
         }
 
         /// <summary>
         /// Delete Order, if order exists
         /// </summary>
-        public void DeleteOrder(int orderId)
+        //TODO if order is not from that customer
+        public void DeleteOrder(int orderId, int customerId)
         {
             if (FindOrder(orderId) == null) throw new BusinessException("order doesn't exist");
-            uow.Orders.RemoveOrder(orderId);
+            if (FindCustomer(customerId) == null) throw new BusinessException("customer doesn't exist");
+            uow.Orders.RemoveOrder(orderId, customerId);
+            uow.Complete();
         }
 
         /// <summary>
         /// Add Customer, if the unique combination address and name doesn't exists
         /// </summary>
-        public void AddCustomer(string name, string address)
+        public Customer AddCustomer(string name, string address)
         {
+            try
+            {
             if (uow.Customers.Find(name, address) != null) throw new BusinessException("this combination of name and address already exists");
-            uow.Customers.AddCustomer(new Customer(name, address));
+            Customer customer = new Customer(name, address);
+            uow.Customers.AddCustomer(customer);
             uow.Complete();
+            return customer;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
         }
 
         /// <summary>

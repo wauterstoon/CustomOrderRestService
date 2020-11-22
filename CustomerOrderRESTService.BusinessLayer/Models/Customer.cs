@@ -65,6 +65,11 @@ namespace CustomerOrderRESTService.BusinessLayer.Models
             if (address.Length < 10) throw new BusinessException("address must be 10 characters or more");
             Address = address ?? throw new NullReferenceException(nameof(address));
         }
+        public Customer(List<Order> orders)
+        {
+            if(orders.Count <= 0) throw new BusinessException("orders cannot be null");
+            _orders = orders;
+        }
 
         #endregion Constructors
 

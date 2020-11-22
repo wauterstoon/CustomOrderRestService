@@ -21,7 +21,8 @@ namespace CustomerOrderRESTService.ASP.NET
         {
             services.AddControllers(setup => {
                 setup.ReturnHttpNotAcceptable = true;
-            }).AddXmlDataContractSerializerFormatters();
+            }).AddNewtonsoftJson()
+            .AddXmlDataContractSerializerFormatters();
 
             //services.AddSingleton<IManager, Manager>();
         }

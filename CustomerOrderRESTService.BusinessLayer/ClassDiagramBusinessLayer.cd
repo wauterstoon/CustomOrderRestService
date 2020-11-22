@@ -13,7 +13,7 @@
   <Class Name="CustomerOrderRESTService.BusinessLayer.Models.Customer">
     <Position X="4.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAECAAAAEAEQAAAAAAAAIAQAAAAAAAACAQAAAAAAgAA=</HashCode>
+      <HashCode>AAECIAAAEAEQAAAAAABAAAQAAAAAAAACAQAAAEAAAAA=</HashCode>
       <FileName>Models\Customer.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -24,12 +24,12 @@
   <Class Name="CustomerOrderRESTService.BusinessLayer.Models.Order">
     <Position X="1" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAECAAAAAAAAAAAEAAAAAACAAAAAAJAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAECEAAAAAAAAIAEAABAAACAAAAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>Models\Order.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Customer" />
       <Property Name="Product" />
+      <Property Name="Customer" />
     </ShowAsAssociation>
   </Class>
   <Class Name="CustomerOrderRESTService.BusinessLayer.Exceptions.BusinessException" Collapsed="true">
@@ -61,7 +61,7 @@
     </TypeIdentifier>
   </Interface>
   <Enum Name="CustomerOrderRESTService.BusinessLayer.Models.ProductType" Collapsed="true">
-    <Position X="1" Y="5.25" Width="1.5" />
+    <Position X="1" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAABAQAAAAQAAAAAAAAAAAA=</HashCode>
       <FileName>Models\ProductType.cs</FileName>
