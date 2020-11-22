@@ -36,6 +36,28 @@ namespace CustomerOrderRESTService.ASP.NET.Controllers
             }
         }
 
+
+        //[HttpGet("{id}")]
+        //[HttpHead("{id}")]
+        //public ActionResult<Customer> Get(int id)
+        //{
+        //    try
+        //    {
+        //        BusinessLayer.Models.Customer customerCreated = manager.FindCustomer(id);
+        //        customerCreated.Orders = manager.GetOrdersFromCustomer(id);
+        //        Customer customer = new Customer();
+        //        customer.Id = customerCreated.Id;
+        //        customer.Name = customerCreated.Name;
+        //        customer.Address = customerCreated.Address;
+        //        customer.Orders = customerCreated.Orders;
+        //        return base.Ok(customer);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return NotFound(ex.Message);
+        //    }
+        //}
+
         [HttpPost]
         public ActionResult<Customer> Post([FromBody] Customer customer)
         {
@@ -121,9 +143,8 @@ namespace CustomerOrderRESTService.ASP.NET.Controllers
             {
                 BusinessLayer.Models.Order orderCreated = manager.AddOrder(customerId, order.Product, order.Amount);
                 //TODO fix looping
-                //try 
-               // return CreatedAtAction(nameof(Get), orderCreated);
-                return CreatedAtAction(nameof(Get), new { id = orderCreated.Id }, orderCreated);
+                return CreatedAtAction(nameof(Get), new { id = order.OrderId }, order);
+                //return CreatedAtAction(nameof(Get), new { id = orderCreated.Id }, orderCreated);
             }
             manager.UpdateOrder(orderId, customerId, order.Amount, order.Product);
             return new NoContentResult();

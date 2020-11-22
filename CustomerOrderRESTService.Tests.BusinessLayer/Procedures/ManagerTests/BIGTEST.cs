@@ -26,12 +26,12 @@ namespace CustomerOrderRESTService.Tests.BusinessLayer.Procedures.ManagerTests.O
             manager.AddCustomer("Jan Janssens", "Nieuwstraat 100, 1000 Brussel");
             manager.AddOrder(2, ProductType.Duvel, 5);
 
-            manager.DeleteOrder(1);
+            //manager.DeleteOrder(1);
 
             manager.FindOrder(4);
 
-            manager.DeleteOrder(2);
-            manager.DeleteOrder(3);
+           // manager.DeleteOrder(2);
+           // manager.DeleteOrder(3);
 
             manager.FindCustomer(2);
 

@@ -1,4 +1,5 @@
 ﻿using CustomerOrderRESTService.BusinessLayer.Models;
+using System.Collections.Generic;
 
 namespace CustomerOrderRESTService.BusinessLayer.Interfaces
 {
@@ -11,6 +12,8 @@ namespace CustomerOrderRESTService.BusinessLayer.Interfaces
         void RemoveCustomer(int id);
 
         Customer Find(int id);
+
+        List<Order> GetOrders(int id); 
 
         Customer Find(string name, string address);
     }

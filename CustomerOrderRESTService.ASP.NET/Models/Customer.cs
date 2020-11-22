@@ -8,6 +8,6 @@ namespace CustomerOrderRESTService.ASP.NET.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public IReadOnlyList<Order> Orders { get; set; }
+        public List<BusinessLayer.Models.Order> Orders { get; set; }
     }
 }

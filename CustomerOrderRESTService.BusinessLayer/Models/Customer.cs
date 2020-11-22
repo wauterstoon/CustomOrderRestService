@@ -44,11 +44,15 @@ namespace CustomerOrderRESTService.BusinessLayer.Models
                 _address = value;
             }
         }
-
-        public IReadOnlyList<Order> Orders
+        public List<Order> Orders
         {
-            get { return _orders.AsReadOnly(); }
+            get { return _orders; }
+            set { _orders = value;  }
         }
+        //public IReadOnlyList<Order> Orders
+        //{
+        //    get { return _orders.AsReadOnly(); }
+        //}
 
         #endregion Properties
 
@@ -65,11 +69,20 @@ namespace CustomerOrderRESTService.BusinessLayer.Models
             if (address.Length < 10) throw new BusinessException("address must be 10 characters or more");
             Address = address ?? throw new NullReferenceException(nameof(address));
         }
-        public Customer(List<Order> orders)
-        {
-            if(orders.Count <= 0) throw new BusinessException("orders cannot be null");
-            _orders = orders;
-        }
+        //public Customer(string name, string address, List<Order> orders)
+        //{
+        //    if (name == String.Empty) throw new BusinessException("name can't be empty");
+        //    Name = name ?? throw new NullReferenceException(nameof(name));
+        //    if (address.Length < 10) throw new BusinessException("address must be 10 characters or more");
+        //    Address = address ?? throw new NullReferenceException(nameof(address));
+        //    if (orders.Count <= 0) throw new BusinessException("orders cannot be null");
+        //    _orders = orders;
+        //}
+        //public Customer(List<Order> orders)
+        //{
+        //    if(orders.Count <= 0) throw new BusinessException("orders cannot be null");
+        //    _orders = orders;
+        //}
 
         #endregion Constructors
 

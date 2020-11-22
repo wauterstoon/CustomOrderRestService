@@ -1,6 +1,7 @@
 ﻿using CustomerOrderRESTService.BusinessLayer.Interfaces;
 using CustomerOrderRESTService.BusinessLayer.Models;
 using CustomerOrderRESTService.EFLayer.DataAccess;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CustomerOrderRESTService.EFLayer.Repositories
@@ -22,6 +23,11 @@ namespace CustomerOrderRESTService.EFLayer.Repositories
         public Customer Find(int id)
         {
             return context.Customers.Find(id);
+        }
+
+        public List<Order> GetOrders (int customerId)
+        {
+            return context.Orders.Where(x => x.Customer.Id == customerId).ToList();
         }
 
         public Customer Find(string name, string address)

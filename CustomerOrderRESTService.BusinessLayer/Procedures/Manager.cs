@@ -2,6 +2,7 @@
 using CustomerOrderRESTService.BusinessLayer.Interfaces;
 using CustomerOrderRESTService.BusinessLayer.Models;
 using System;
+using System.Collections.Generic;
 
 namespace CustomerOrderRESTService.BusinessLayer.Procedures
 {
@@ -104,7 +105,14 @@ namespace CustomerOrderRESTService.BusinessLayer.Procedures
         /// <returns>Customer object</returns>
         public Customer FindCustomer(int customerId)
         {
-            return uow.Customers.Find(customerId);
+            Customer customer = uow.Customers.Find(customerId);
+           // customer.Orders = GetOrdersFromCustomer(customerId);
+            return customer;
+        }
+
+        public List<Order> GetOrdersFromCustomer(int customerId)
+        {
+            return uow.Customers.GetOrders(customerId);
         }
 
         /// <summary>

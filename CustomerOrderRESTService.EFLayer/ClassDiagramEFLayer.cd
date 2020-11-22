@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="CustomerOrderRESTService.EFLayer.DataAccess.DataContext">
-    <Position X="10.5" Y="2" Width="1.5" />
+    <Position X="9.5" Y="2" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAEAABAQAQAAAAgAAIAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DataAccess\DataContext.cs</FileName>
@@ -19,15 +19,15 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="CustomerOrderRESTService.EFLayer.Repositories.CustomerRepository">
-    <Position X="5.5" Y="2" Width="1.5" />
+    <Position X="1" Y="2" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAQAAAAAAAQAAAAAAACAIAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAQAAAQAAAAAAAQAAAAAAACAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Repositories\CustomerRepository.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="CustomerOrderRESTService.EFLayer.Repositories.OrderRepository">
-    <Position X="8" Y="2" Width="1.5" />
+    <Position X="3.75" Y="2.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AQACAAAgAAAAAAAAAAAAAAAAAAAIAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Repositories\OrderRepository.cs</FileName>
